@@ -7,7 +7,7 @@ setup(
     version="3.0.1",
     author="ePayco Development Team",
     author_email="ricardo.saldarriaga@epayco.co",
-    packages=['epaycosdk'],
+    packages=['epaycosdk', 'epaycosdk/utils'],
     url='https://epayco.co/',
     download_url="https://github.com/epayco/epayco-python",
     license="MIT",
