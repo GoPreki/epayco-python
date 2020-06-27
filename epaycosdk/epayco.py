@@ -1,31 +1,23 @@
-import epaycosdk.resources
-from epaycosdk.resources import Token
-from epaycosdk.resources import Customers
-from epaycosdk.resources import Plan
-from epaycosdk.resources import Subscriptions
-from epaycosdk.resources import Bank
-from epaycosdk.resources import Cash
-from epaycosdk.resources import Charge
-#from epaycosdk.resources import Safetypay
+from epaycosdk.resources import Token, Customers, Bank, Cash, Charge, Subscriptions, Plan
+from epaycosdk.utils.constants import Languages
+
 
 class Epayco:
-
-    public_key = ""
-    api_key = ""
+    public_key = ''
+    api_key = ''
     test = False
-    lang = "ES"
+    lang = Languages.SPANISH
 
     def __init__(self, options):
-        self.api_key = options["apiKey"]
-        self.private_key = options["privateKey"]
-        self.test = options["test"]
-        self.lang = options["lenguage"]
+        self.api_key = options['api_key']
+        self.private_key = options['private_key']
+        self.test = options['test']
+        self.lang = options['language']
 
-        self.token = Token(self)
-        self.customer = Customers(self)
-        self.plan = Plan(self)
-        self.subscriptions = Subscriptions(self)
-        self.bank = Bank(self)
-        self.cash = Cash(self)
-        self.charge=Charge(self)
-        #self.safetypay=Safetypay(self)
+        self.token = Token(options)
+        self.customer = Customers(options)
+        self.bank = Bank(options)
+        self.cash = Cash(options)
+        self.charge = Charge(options)
+        self.plan = Plan(options)
+        self.subscriptions = Subscriptions(options)
