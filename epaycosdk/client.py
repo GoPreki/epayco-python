@@ -39,7 +39,6 @@ class Client:
 
         return {
             **common_headers,
-            # 'lang': LANGUAGE,
             'Authorization': f'Bearer {self.auth_token}'
         }
 
@@ -54,11 +53,8 @@ class Client:
             'private_key': self.private_key
         }
 
-        print(send_data, headers)
-
         response = requests.post(url=url, headers=headers, data=json.dumps(send_data))
         data = response.json()
-        print(data)
         if data['status']:
             self.auth_token = data['bearer_token']
         else:

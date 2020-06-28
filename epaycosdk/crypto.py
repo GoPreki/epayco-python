@@ -24,7 +24,7 @@ class AESCipher:
         return s[0:-(s[-1])]
 
     def encrypt(self, row):
-        raw = AESCipher.pad(row).encode('utf8')
+        raw = AESCipher.pad(str(row)).encode('utf8')
         cipher = AES.new(self.key.encode('utf8'), AES.MODE_CBC, self.iv.encode('utf8'))
         enc = cipher.encrypt(raw)
         return base64.b64encode(enc).decode('utf8')
