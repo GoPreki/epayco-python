@@ -17,14 +17,14 @@ class AESCipher:
     @staticmethod
     def pad(s):
         BS = 16
-        return s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
+        return s + (BS - len(s) % BS) * chr(BS - len(s) % BS).encode('utf8')
 
     @staticmethod
     def unpad(s):
         return s[0:-(s[-1])]
 
     def encrypt(self, row):
-        raw = AESCipher.pad(str(row)).encode('utf8')
+        raw = AESCipher.pad(str(row).encode('utf8'))
         cipher = AES.new(self.key.encode('utf8'), AES.MODE_CBC, self.iv.encode('utf8'))
         enc = cipher.encrypt(raw)
         return base64.b64encode(enc).decode('utf8')
